@@ -1,0 +1,16 @@
+h1 Sessions#new
+
+= form_with scope: :session, url: login_path, local: true do |f|
+
+  = f.label :identifier
+  = f.text_field :identifier
+
+  = f.label :password
+  = f.password_field :password
+
+  = f.submit '作成'
+
+div
+  = link_to '新規作成', new_user_path
+div
+  = link_to 'ホーム', root_path

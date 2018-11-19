@@ -1,0 +1,22 @@
+= form_with model: @user, local: true do |f|
+  = f.label :name
+  = f.text_field :name
+
+  = f.label :identifier
+  = f.text_field :identifier
+
+  = f.label :email
+  = f.text_field :email
+
+  = f.label :password
+  = f.password_field :password
+
+  = f.label :password_confirmation, '確認'
+  = f.password_field :password_confirmation
+
+  = f.submit '作成'
+
+div
+  = link_to 'ログイン', login_path
+div
+  = link_to 'ホーム', root_path

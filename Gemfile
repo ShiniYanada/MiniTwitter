@@ -28,10 +28,16 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'faker'
-
+#User xxx.html.slim
+gem 'slim-rails'
+gem 'html2slim'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
+#Use bootstrap4
+gem 'bootstrap'
+#User jQuery
+gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
