@@ -8,4 +8,27 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    - if logged_in?
+      nav.navbar.navbar-expand.fixed-top.bg-white.py-0.common-nav
+        .header-wrap
+          ul.navbar-nav.nav-height
+            .nav-item-box
+              li.nav-item
+                = link_to 'ホーム', root_path, class: 'nav-link nav-text'
+            .nav-item-box
+              li.nav-item
+                = link_to '通知', '#', class: 'nav-link nav-text'
+            .nav-item-box
+              li.nav-item
+                = link_to 'メッセージ', '#', class: 'nav-link nav-text'
+          ul.navbar-nav.ml-auto
+            = form_with scope: :test, class: 'form-inline ' do |f|
+              = f.text_field :search, class: 'from-control nav-search',placeholder: 'キーワード検索'
+              = f.submit '検索', class: 'btn btn-info ml-2'
+            li.nav-item
+
+                = link_to 'Tweet', login_path, class: 'btn btn-primary ml-2 nav-link login-btn'
+
+
+
     = yield

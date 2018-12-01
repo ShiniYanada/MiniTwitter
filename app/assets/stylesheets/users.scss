@@ -1,3 +1,395 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//hedaer
+
+textarea, input[type='text'],input[type='password']{
+  outline: none;
+  &:focus{
+    border: 2px solid #1daef2;
+  }
+}
+
+
+//display: flexを指定しないと内部の要素が縦に並んでしまう
+.header-wrap{
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1100px;
+}
+//高さを指定しないと中のdivでborder-bottom指定した時にheightがその都度変わって動いてるように見えてしまう
+.nav-height{
+  height: 50px;
+}
+
+.common-nav{
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.25);
+}
+
+.nav-item-box{
+  &:hover{
+    border-bottom: 2px solid blue;
+  }
+  .nav-item{
+    padding: 7px;
+  }
+}
+
+
+.login-btn{
+  font-size: 17px;
+  width: 75px;
+  padding: 5px;
+  margin-top: 7px;
+  border-radius: 20px;
+}
+
+.nav-text{
+  font-weight: bold;
+  color: gray;
+}
+
+.nav-search{
+  border-radius: 18px;
+  border: 1px solid #e6ecf0;
+  padding: 8px 32px 8px 14px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.wrapper{
+  padding-top: 65px;
+  margin: 0 auto;
+  width: 1100px;
+}
+
+// サイドバー
+.left-main{
+  margin: 5px;
+  height: 300px;
+  height: auto;
+}
+
+.profile-header-img{
+  height: 95px;
+}
+
+.profile-content{
+  position: relative;
+  .profile-info{
+    position: absolute;
+    top: 8px;
+    left: 100px;
+  }
+}
+
+.prof-id-in{
+  color: gray;
+}
+
+.prof-cont-link{
+  display: inline-block;
+  margin-top: -30px;
+  margin-left: 5px;
+}
+
+.prof-cont-img{
+  border: 4px solid #fff;
+}
+
+.my-status{
+  display: flex;
+  justify-content: space-between;
+}
+
+.tweet-title, .following-title, .follower-title{
+  font-size: 15px;
+  color: gray;
+  font-weight: 600;
+}
+.tweet-number, .following-number, .follower-number{
+  color: blue;
+}
+
+
+
+//　メインバー
+
+.center-main{
+  margin: 5px;
+  height: auto;
+}
+
+.tweet-box{
+  padding: 10px 12px;
+  position: relative;
+}
+
+.tweet-wrap{
+  background-color: #E8F5FD;
+}
+
+.tweet-box-user-img{
+  margin-left: 10px;
+  margin-right: 5px;
+  width: 40px;
+  height: 40px;
+}
+
+.tweet-content{
+  border-radius: 10px;
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  height: 45px;
+  resize: none;
+  border: none;
+  &:focus{
+    height: 100px;
+  }
+}
+
+.tweet-btn-box{
+  display: flex;
+  justify-content: flex-end;
+  .tweet-btn{
+    margin-top: 5px;
+    font-size: 17px;
+    width: 75px;
+    padding: 5px;
+    margin-top: 7px;
+    border-radius: 20px;
+  }
+}
+
+// タイムライン
+.timeline-box{
+  padding: 9px 12px;
+  border-bottom: 1px solid #e6ecf0;
+}
+.timeline-user-img{
+  width: 48px;
+  height: 48px;
+  margin-right: 6px;
+}
+
+.timeline-user-name{
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 3px;
+  a{
+    color: #14171a;
+  }
+}
+
+.timeline-user-id{
+  font-size: 14px;
+  color: #657786;
+  margin-right: 3px;
+}
+
+.timeline-time{
+  font-size: 14px;
+  color: #657786;
+}
+
+.tweet-items{
+  display: flex;
+  width: 100%;
+}
+
+.tweet-in-timeline{
+  p{
+    margin-bottom: 7px;
+  }
+}
+
+.timeline-pagination{
+  display: flex;
+  justify-content: center;
+}
+
+// サイドバー（右側)
+.right-main{
+  margin: 5px;
+  height: auto;
+}
+
+.suggesting-box{
+  padding: 15px;
+  h3{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+  }
+}
+
+.suggesting-header{
+  display: flex;
+}
+
+.suggesting-user{
+  border-bottom: 1px solid #e6ecf0;
+  padding-bottom: 9px;
+}
+
+.sug-follow-btn{
+  border-radius: 20px;
+  border-color: #1DA1F2;
+  color: #1DA1F2;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.updating-btn{
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+
+// ユーザーページ
+
+.page-outer{
+  padding-top:  52px;
+}
+
+.user-header{
+  height: 145px;
+  background-color: #1DA1F2 !important;
+}
+
+.u-inner{
+  width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.u-profile-img{
+  width: 200px;
+  height: 200px;
+  border: 5px solid #fff;
+  top: 40px;
+  position: absolute;
+}
+
+.UserProfileNav{
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+//高さを指定してマウスオーバー時に高さが変動しないようにする
+.user-profile-nav{
+  background-color: #fff;
+  width: 100%;
+  height: 68px;
+}
+
+.us-prof-nav{
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.prof-nav-stat{
+  display: block;
+  padding: 14px 15px 7px !important;
+  &:hover{
+    border-bottom: 2px solid #1DA1F2;
+    text-decoration: none !important;
+  }
+}
+
+.prof-tweet-item{
+  display: block;
+  font-weight: bold;
+  font-size: 12px;
+  color: #657786;
+}
+
+.prof-tweet-number{
+  display: block;
+  font-weight: bold;
+  font-size: 18px;
+  color: #657786;
+  &:hover{
+    color: #1DA1F2;
+  }
+}
+
+.edit-nav{
+  margin: 0 0 0 auto;
+  list-style: none;
+  padding: 0;
+  .edit-nav-item{
+    padding: 14px 0 0 2px;
+  }
+}
+
+
+.edit-btn{
+  font-weight: bold;
+  display: block;
+  border-radius: 20px;
+  border: 1px solid #66757f;
+  color: #66757f;
+  &:hover{
+    background-color: #dfe3e6;
+    color: #66757f;
+  }
+}
+
+//　　　user/show　メインコンテント
+
+.us-wrap{
+  padding: 5px!important;
+}
+
+.us-profile{
+  margin-top: 30px;
+}
+
+.us-prof-header{
+  h1{
+    font-size: 24px;
+    margin: 0;
+  }
+  p{
+    font-weight: normal;
+  }
+  span{
+    color: #657786;
+  }
+}
+
+.us-timeline-wrap{
+  margin-top: 15px;
+  background-color: #fff;
+}
+
+.us-tl-head{
+  height: 51px;
+  border-bottom: 1px solid #e6ecf0;
+}
+
+.us-tl-nav{
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.us-tl-item{
+  display: block;
+  padding: 15px 15px 12px;
+  font-weight: bold;
+  color: #1DA1F2 !important;
+  &:hover{
+    border-bottom: 2px solid #1DA1F2;
+    text-decoration: none !important;
+  }
+}

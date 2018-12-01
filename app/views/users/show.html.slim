@@ -1,2 +1,95 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+.page-outer
+
+  .page-header
+    .user-header
+      .u-inner
+        .u-avater
+          = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'u-profile-img rounded-circle'
+    .user-profile-nav.common-nav
+      .u-inner
+        .row
+          .col-3
+
+          .col-9
+            .UserProfileNav
+              ul.us-prof-nav
+                li
+                  = link_to '#',class: 'prof-nav-stat' do
+                    span.prof-tweet-item Tweet
+                    span.prof-tweet-number 7777
+                li
+                  = link_to '#',class: 'prof-nav-stat' do
+                    span.prof-tweet-item Following
+                    span.prof-tweet-number 777
+                li
+                  = link_to '#',class: 'prof-nav-stat' do
+                    span.prof-tweet-item Follower
+                    span.prof-tweet-number 777
+                li
+                  = link_to '#',class: 'prof-nav-stat' do
+                    span.prof-tweet-item Likes
+                    span.prof-tweet-number 777
+              ul.edit-nav
+                li.edit-nav-item
+                  = link_to '#', class: 'edit-btn btn' do
+                    span.editBtn Edit profile
+
+.us-main
+  .u-inner
+    .row
+      .col-3
+        .us-profile
+          .us-prof-header
+            h1 = current_user.name
+            p = current_user.identifier
+            span = current_user.created_at
+
+      .col-6.us-wrap
+        .us-timeline-wrap
+          .us-tl-head
+            ul.us-tl-nav
+              li
+                = link_to '#', class:'us-tl-item' do
+                  span ツイート
+              li
+                = link_to '#', class:'us-tl-item' do
+                  span　ツイートと返信
+              li
+                = link_to '#', class:'us-tl-item' do
+                  span メディア
+
+          .timeline-wrap
+            - @posts.each do |post|
+              .timeline-box
+                .media
+                  = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class:'timeline-user-img rounded-circle'
+                  .media-body
+                    span.timeline-user-name
+                      = link_to current_user.name, user_path(current_user)
+                    span.timeline-user-id = current_user.identifier
+                    span.timeline-time = post.created_at
+                    .tweet-in-timeline
+                      p = post.content
+                    .tweet-items
+                      = link_to '#' do
+                        = fa_icon 'heart-o'
+            .timeline-pagination
+              = paginate @posts
+
+      .col-3.us-wrap
+        .us-timeline-wrap
+          .suggesting-box
+            .suggesting-header
+              h3 オススメのユーザー
+              .suggesting-update
+                span = link_to '更新', root_url, class: 'updating-btn'
+            .suggesting-users
+              - @suggesting_users.each do |user|
+                .suggesting-user
+                  .media
+                    = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'timeline-user-img rounded-circle'
+                    .media-body
+                      .suggested_user
+                        = user.name
+                      .follow_suggestion
+                        = link_to 'Follow', '#', class:'btn sug-follow-btn'
