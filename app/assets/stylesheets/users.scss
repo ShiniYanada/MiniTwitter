@@ -105,13 +105,23 @@ textarea, input[type='text'],input[type='password']{
   justify-content: space-between;
 }
 
-.tweet-title, .following-title, .follower-title{
+.stat-title{
   font-size: 15px;
   color: gray;
   font-weight: 600;
 }
-.tweet-number, .following-number, .follower-number{
-  color: blue;
+
+.my-stat:hover .stat-title{
+  color: #57b4ec;
+}
+
+.stat-link{
+  &:hover{
+    text-decoration: none;
+  }
+}
+.stat-number{
+  color: #1DA1F2 !important;
 }
 
 
@@ -236,12 +246,20 @@ textarea, input[type='text'],input[type='password']{
   padding-bottom: 9px;
 }
 
+.sug-user-name{
+  color: black;
+  text-decoration: none !important;
+}
+
 .sug-follow-btn{
   border-radius: 20px;
   border-color: #1DA1F2;
   color: #1DA1F2;
   font-size: 12px;
   font-weight: bold;
+  &:hover{
+    background-color: #deeff9;
+  }
 }
 
 .updating-btn{
@@ -392,4 +410,99 @@ textarea, input[type='text'],input[type='password']{
     border-bottom: 2px solid #1DA1F2;
     text-decoration: none !important;
   }
+}
+
+// user/following or user/followers
+
+.us-sug{
+  margin: 0;
+}
+
+.us-ff-inner{
+  margin-top: 5px;
+}
+
+.us-ff-division{
+  padding: 0 !important;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+
+.us-ff-item{
+  padding: 5px;
+  width: 33%;
+}
+
+.us-ff-header{
+  position: relative;
+}
+
+.us-ff-img{
+  height: 90px;
+  width: 100%;
+}
+
+.us-ff-icon{
+  width: 70px;
+  height: 70px;
+  display: block;
+  position: absolute;
+  border: 5px solid #fff;
+  top: 50px;
+  left: 10px;
+  z-index: 2;
+}
+
+.us-ff-prof{
+  background-color: #fff;
+  padding: 13px 15px;
+}
+
+.us-ff-btn{
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.us-flg-btn{
+  display: block;
+  background-color: #4AB3F4;
+  border-radius: 20px;
+  font-weight: bold;
+  right: 0;
+  margin: 0;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 12px;
+  &:hover{
+    color: black;
+  }
+}
+
+.us-ff-id{
+  display: inline-block;
+}
+
+.ff-name{
+  color: #14171a;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ff-id{
+  font-weight: normal;
+  color: #66757f;
+  font-size: 14px;
+}
+
+.ff-true{
+  background-color: #e6ecf0;
+  border-radius: 4px;
+  color: #657786;
+  font-size: 12px;
+  font-weight: normal;
+  margin-left: 2px;
+  padding: 2px 4px;
 }

@@ -1,38 +1,4 @@
-.page-outer
-
-  .page-header
-    .user-header
-      .u-inner
-        .u-avater
-          = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'u-profile-img rounded-circle'
-    .user-profile-nav.common-nav
-      .u-inner
-        .row
-          .col-3
-
-          .col-9
-            .UserProfileNav
-              ul.us-prof-nav
-                li
-                  = link_to '#',class: 'prof-nav-stat' do
-                    span.prof-tweet-item Tweet
-                    span.prof-tweet-number 7777
-                li
-                  = link_to '#',class: 'prof-nav-stat' do
-                    span.prof-tweet-item Following
-                    span.prof-tweet-number 777
-                li
-                  = link_to '#',class: 'prof-nav-stat' do
-                    span.prof-tweet-item Follower
-                    span.prof-tweet-number 777
-                li
-                  = link_to '#',class: 'prof-nav-stat' do
-                    span.prof-tweet-item Likes
-                    span.prof-tweet-number 777
-              ul.edit-nav
-                li.edit-nav-item
-                  = link_to '#', class: 'edit-btn btn' do
-                    span.editBtn Edit profile
+= render 'us_header'
 
 .us-main
   .u-inner
@@ -40,9 +6,9 @@
       .col-3
         .us-profile
           .us-prof-header
-            h1 = current_user.name
-            p = current_user.identifier
-            span = current_user.created_at
+            h1 = @user.name
+            p = @user.identifier
+            span = @user.created_at
 
       .col-6.us-wrap
         .us-timeline-wrap
@@ -90,6 +56,6 @@
                     = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'timeline-user-img rounded-circle'
                     .media-body
                       .suggested_user
-                        = user.name
+                        = link_to user.name, user_path(user), class: 'sug-user-name'
                       .follow_suggestion
                         = link_to 'Follow', '#', class:'btn sug-follow-btn'

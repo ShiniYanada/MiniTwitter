@@ -1,29 +1,24 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :following, :followers]
+  before_action :suggesting_users, only: [:index, :show, :following, :followers]
   before_action :logged_in_user, only: [:show, :edit, :update]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
 
   def index
-    @posts = current_user.posts.order(created_at: :desc).page(params[:page]) if logged_in?
-    random_num = []
-    3.times do
-      random_num << rand(User.first.id..User.last.id)
-    end
-    @suggesting_users = User.find(random_num)
+    @post = current_user.posts.build if logged_in?
+    @feed_items = current_user.feed.order(created_at: :desc).page(params[:page]) if logged_in?
   end
 
   def show
-    @user = User.find_by(identifier: params[:identifier])
-    @posts = current_user.posts.order(created_at: :desc).page(params[:page]) if logged_in?
-    random_num = []
-    3.times do
-      random_num << rand(User.first.id..User.last.id)
-    end
-    @suggesting_users = User.find(random_num)
+    @posts = @user.posts.order(created_at: :desc).page(params[:page])
   end
 
   def edit
-    @user = User.find_by(identifier: params[:identifier])
+
+  end
+
+  def update
   end
 
   def new
@@ -45,7 +40,21 @@ class UsersController < ApplicationController
     redirect_to root_url
   end
 
+  def following
+    @users = @user.following.page(params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @users = @user.followers.page(params[:page])
+    render 'show_follow'
+  end
+
   private
+
+    def set_user
+      @user = User.find_by(identifier: params[:identifier])
+    end
 
     def user_params
       params.require(:user).permit(:identifier, :email, :name, :password, :password_confirmation)
@@ -60,5 +69,13 @@ class UsersController < ApplicationController
     def correct_user
       @user = User.find_by(identifier: params[:identifier])
       redirect_to(root_url) unless current_user?(@user)
+    end
+
+    def suggesting_users
+      random_num = []
+      3.times do
+        random_num << rand(User.first.id..User.last.id)
+      end
+      @suggesting_users = User.find(random_num)
     end
 end

@@ -13,21 +13,24 @@
               = link_to current_user.identifier, user_path(current_user), class:' prof-id-in'
 
           .my-status.p-3
-            .my-tweet
-              .tweet-title
-                span. ツイート
-              .tweet-number
-                span 777
-            .my-following
-              .following-title
-                span フォロー
-              .following-number
-                span 777
-            .my-follower
-              .follower-title
-                span フォロワー
-              .follower-number
-                span 777
+            .my-stat
+              = link_to user_path(current_user), class: 'stat-link' do
+                .stat-title
+                  span. ツイート
+                .stat-number
+                  span = current_user.posts.count
+            .my-stat
+              = link_to following_user_path(current_user), class: 'stat-link' do
+                .stat-title
+                  span フォロー
+                .stat-number
+                  span = current_user.following.count
+            .my-stat
+              = link_to followers_user_path(current_user), class: 'stat-link' do
+                .stat-title
+                  span フォロワー
+                .stat-number
+                  span = current_user.followers.count
 
 
     .col-6
@@ -37,19 +40,19 @@
             .media
               = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'tweet-box-user-img rounded-circle'
               .media-body
-                = form_with model: Post.new, class: 'tweet-box-content', local: true do |f|
+                = form_with model: @post, class: 'tweet-box-content', local: true do |f|
                   = f.text_area :content, class:'tweet-content', placeholder: 'いまどうしてる'
                   .tweet-btn-box
                     = f.submit '投稿', class: 'btn btn-info tweet-btn'
         .timeline-wrap
-          - @posts.each do |post|
+          - @feed_items.each do |post|
             .timeline-box
               .media
                 = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class:'timeline-user-img rounded-circle'
                 .media-body
                   span.timeline-user-name
-                    = link_to current_user.name, user_path(current_user)
-                  span.timeline-user-id = current_user.identifier
+                    = link_to post.user.name, user_path(post.user)
+                  span.timeline-user-id = post.user.identifier
                   span.timeline-time = post.created_at
                   .tweet-in-timeline
                     p = post.content
@@ -57,7 +60,7 @@
                     = link_to '#' do
                       = fa_icon 'heart-o'
           .timeline-pagination
-            = paginate @posts
+            = paginate @feed_items
 
     .col-3
       .right-main.bg-white
@@ -73,6 +76,6 @@
                   = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'timeline-user-img rounded-circle'
                   .media-body
                     .suggested_user
-                      = user.name
+                      = link_to user.name, user_path(user), class: 'sug-user-name'
                     .follow_suggestion
                       = link_to 'Follow', '#', class:'btn sug-follow-btn'

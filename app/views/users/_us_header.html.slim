@@ -1,0 +1,35 @@
+.page-outer
+
+  .page-header
+    .user-header
+      .u-inner
+        .u-avater
+          = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'u-profile-img rounded-circle'
+    .user-profile-nav.common-nav
+      .u-inner
+        .row
+          .col-3
+
+          .col-9
+            .UserProfileNav
+              ul.us-prof-nav
+                li
+                  = link_to user_path(@user),class: 'prof-nav-stat' do
+                    span.prof-tweet-item Tweet
+                    span.prof-tweet-number = @user.posts.count
+                li
+                  = link_to following_user_path(@user),class: 'prof-nav-stat' do
+                    span.prof-tweet-item Following
+                    span.prof-tweet-number = @user.following.count
+                li
+                  = link_to followers_user_path(@user),class: 'prof-nav-stat' do
+                    span.prof-tweet-item Follower
+                    span.prof-tweet-number = @user.followers.count
+                li
+                  = link_to '#',class: 'prof-nav-stat' do
+                    span.prof-tweet-item Likes
+                    span.prof-tweet-number 777
+              ul.edit-nav
+                li.edit-nav-item
+                  = link_to '#', class: 'edit-btn btn' do
+                    span.editBtn Edit profile

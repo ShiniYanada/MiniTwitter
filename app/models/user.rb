@@ -27,4 +27,8 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def feed
+    Post.where("user_id IN (?) OR user_id = ?", following_ids, id)
+  end
+
 end
