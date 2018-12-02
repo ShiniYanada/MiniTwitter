@@ -1,3 +1,58 @@
-// Place all the styles related to the Sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.account-wrap{
+  padding-top: 50px;
+}
+
+.max-800{
+  width: 800px;
+  margin: 0 auto;
+}
+
+.form-wrap{
+  margin-top: 15px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.title-wrap{
+  display: flex;
+  position: relative;
+  justify-content: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #EEE;
+}
+
+.new-create{
+  position: absolute;
+  right: 0;
+  top: 20px;
+}
+
+.form-style{
+  background-color: #fff;
+  display: block;
+  position: relative;
+}
+
+.form-label{
+  display: block;
+  font-size: 20px;
+  color: #777;
+  padding: 5px 0;
+  margin: 0;
+}
+
+
+.form-field{
+  border-radius: 20px;
+  background-color: #fff !important;
+  border: 1px solid #ced4da;
+  &:focus{
+    border: 2px solid #e6ecf0;
+  }
+}
+
+.form-btn{
+  color: #fff;
+  right: 0;
+  background-color: #4AB3F4 !important;
+}

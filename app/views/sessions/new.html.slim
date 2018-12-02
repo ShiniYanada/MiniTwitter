@@ -1,17 +1,18 @@
-h1 Sessions#new
+.account-wrap
+  .max-800
+    .form-wrap
+      .title-wrap
+        .login-title
+          h3 ログイン
+        .new-create
+          = link_to '新規作成', new_user_path, class:'create-title'
 
-= form_with scope: :session, url: login_path, local: true do |f|
-  .form-group
+      = form_with scope: :session, url: login_path, class: 'form-style', local: true do |f|
+        .form-group
+          = f.label :identifier, 'ID', class:'form-label'
+          = f.text_field :identifier,class: 'form-control form-field',placeholder:'user_id'
+        .form-group
+          = f.label :password, 'パスワード', class: 'form-label'
+          = f.password_field :password,class: 'form-control form-field', placeholder: 'Password'
 
-  = f.label :identifier, 'ID'
-  = f.text_field :identifier,class: 'form-control'
-
-  = f.label :password, 'パスワード'
-  = f.password_field :password,class: 'form-control'
-
-  = f.submit 'ログイン',class: 'btn'
-
-div
-  = link_to '新規作成', new_user_path
-div
-  = link_to 'ホーム', root_path
+        = f.submit 'ログイン',class: 'btn form-btn'

@@ -1,6 +1,7 @@
 @import 'bootstrap';
 @import "font-awesome";
 @import 'users';
+@import 'sessions';
 @import 'reboot';
 
 body{
@@ -11,4 +12,11 @@ body{
 a:hover{
   text-decoration: none;
   color: inherit;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  &:focus{
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+  }
 }
