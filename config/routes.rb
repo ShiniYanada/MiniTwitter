@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     member do
       get :following, :followers, :favorites
     end
+    collection do
+      get :search
+    end 
   end
 
 

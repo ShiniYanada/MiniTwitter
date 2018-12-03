@@ -15,7 +15,7 @@
           .us-tl-head
             ul.us-tl-nav
               li
-                = link_to '#', class:'us-tl-item' do
+                = link_to @user, class:'us-tl-item' do
                   span ツイート
               li
                 = link_to '#', class:'us-tl-item' do
@@ -31,8 +31,8 @@
                   = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class:'timeline-user-img rounded-circle'
                   .media-body
                     span.timeline-user-name
-                      = link_to current_user.name, user_path(current_user)
-                    span.timeline-user-id = current_user.identifier
+                      = link_to post.user.name, user_path(post.user)
+                    span.timeline-user-id = post.user.identifier
                     span.timeline-time = post.created_at
                     .tweet-in-timeline
                       p = post.content

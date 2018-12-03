@@ -1,0 +1,77 @@
+.wrapper
+  .row.no-gutters
+    .col-3
+      .left-main.bg-white
+        = image_tag 'cat.jpg', class: 'w-100 profile-header-img'
+        div.profile-content
+          = link_to user_path(current_user), class: 'prof-cont-link' do
+            = image_tag 'Dr4Z4WXUwAE5SVH.jpg', width: 80, height: 80, class: 'rounded-circle prof-cont-img'
+          .profile-info
+            .prof-name
+              = link_to current_user.name, user_path(current_user), class: 'h5'
+            .prof-id
+              = link_to current_user.identifier, user_path(current_user), class:' prof-id-in'
+
+          .my-status.p-3
+            .my-stat
+              = link_to user_path(current_user), class: 'stat-link' do
+                .stat-title
+                  span. ツイート
+                .stat-number
+                  span = current_user.posts.count
+            .my-stat
+              = link_to following_user_path(current_user), class: 'stat-link' do
+                .stat-title
+                  span フォロー
+                .stat-number
+                  span = current_user.following.count
+            .my-stat
+              = link_to followers_user_path(current_user), class: 'stat-link' do
+                .stat-title
+                  span フォロワー
+                .stat-number
+                  span = current_user.followers.count
+
+
+    .col-6
+      .center-main.bg-white
+        .tweet-wrap
+          .tweet-box
+            .media
+              = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'tweet-box-user-img rounded-circle'
+              .media-body
+                = form_with model: @post, class: 'tweet-box-content', local: true do |f|
+                  = f.text_area :content, class:'tweet-content', placeholder: 'いまどうしてる'
+                  .tweet-btn-box
+                    = f.submit '投稿', class: 'btn btn-info tweet-btn'
+        .timeline-wrap
+          - @search_posts.each do |post|
+            .timeline-box
+              .media
+                = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class:'timeline-user-img rounded-circle'
+                .media-body
+                  span.timeline-user-name
+                    = link_to post.user.name, user_path(post.user)
+                  span.timeline-user-id = post.user.identifier
+                  span.timeline-time = post.created_at
+                  .tweet-in-timeline
+                    p = post.content
+                  .tweet-items
+                    - if current_user.favorite?(post)
+                      = form_with model: current_user.favorites.find_by(post_id: post.id),method: :delete,local: true do |f|
+                        = button_tag class: 'unfav-btn' do
+                          = fa_icon 'heart'
+                        span = post.fav_users.count
+
+                    - else
+                      = form_with model: current_user.favorites.build, local: true do |f|
+                        = hidden_field_tag :post_id, post.id
+                        = button_tag class: 'fav-btn' do
+                          = fa_icon 'heart-o'
+                        span = post.fav_users.count
+          .timeline-pagination
+            = paginate @search_posts
+
+    .col-3
+      .right-main.bg-white
+        = render 'suggesting_users'

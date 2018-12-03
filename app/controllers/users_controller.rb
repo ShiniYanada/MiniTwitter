@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :following, :followers, :favorites]
-  before_action :suggesting_users, only: [:index, :show, :following, :followers, :favorites]
+  before_action :suggesting_users, only: [:index, :show, :following, :followers, :favorites, :search]
   before_action :logged_in_user, only: [:show, :edit, :update]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :set_search, only: [:index, :show, :edit, :following, :followers, :favorites, :search]
 
 
   def index
@@ -55,10 +56,19 @@ class UsersController < ApplicationController
     render 'show_favorites'
   end
 
+  def search
+    @q = Post.ransack(params[:q])
+    @search_posts = @q.result(distinct: true).page(params[:page])
+  end
+
   private
 
     def set_user
       @user = User.find_by(identifier: params[:identifier])
+    end
+
+    def set_search
+      @q = Post.ransack(params[:q])
     end
 
     def user_params

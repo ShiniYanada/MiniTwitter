@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to root_url
     else
-      render 'users/index'
+      redirect_to root_url
     end
   end
 
