@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
 
   resources :posts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   resources :users, param: :identifier do
     member do
       get :following, :followers

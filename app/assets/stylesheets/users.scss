@@ -267,6 +267,18 @@ textarea, input[type='text'],input[type='password']{
   }
 }
 
+.sug-unfollow-btn{
+  background-color: #4AB3F4;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 12px;
+  &:hover{
+    background-color: red;
+  }
+}
+
 .updating-btn{
   font-size: 14px;
   margin-left: 5px;
@@ -363,6 +375,28 @@ textarea, input[type='text'],input[type='password']{
   &:hover{
     background-color: #dfe3e6;
     color: #66757f;
+  }
+}
+
+.nav-unfollow-btn{
+  display: block;
+  background-color: #4AB3F4;
+  border-radius: 20px;
+  font-weight: bold;
+  color: #fff;
+  padding: 4px 12px;
+  &:hover{
+    background-color: red;
+  }
+}
+
+.nav-follow-btn{
+  border-radius: 20px;
+  border-color: #1DA1F2;
+  color: #1DA1F2;
+  font-weight: bold;
+  &:hover{
+    background-color: #deeff9;
   }
 }
 
@@ -471,18 +505,27 @@ textarea, input[type='text'],input[type='password']{
   justify-content: flex-end;
 }
 
-.us-flg-btn{
+.us-unfollow-btn{
   display: block;
   background-color: #4AB3F4;
   border-radius: 20px;
   font-weight: bold;
-  right: 0;
-  margin: 0;
   color: #fff;
   font-size: 12px;
   padding: 4px 12px;
   &:hover{
-    color: black;
+    background-color: red;
+  }
+}
+
+.us-follow-btn{
+  border-radius: 20px;
+  border-color: #1DA1F2;
+  color: #1DA1F2;
+  font-size: 12px;
+  font-weight: bold;
+  &:hover{
+    background-color: #deeff9;
   }
 }
 

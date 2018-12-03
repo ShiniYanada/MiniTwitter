@@ -1,0 +1,22 @@
+.suggesting-box
+  .suggesting-header
+    h3 オススメのユーザー
+    .suggesting-update
+      span = link_to '更新', root_url, class: 'updating-btn'
+  .suggesting-users
+    - @suggesting_users.each do |user|
+      .suggesting-user
+        .media
+          = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'timeline-user-img rounded-circle'
+          .media-body
+            .suggested_user
+              = link_to user.name, user_path(user), class: 'sug-user-name'
+            .follow_suggestion
+              - if current_user.following?(user)
+                = form_with model: current_user.active_relationships.find_by(following_id: user.id), method: :delete,local: true do |f|
+                  = hidden_field_tag :following_id, user.id
+                  = f.submit 'Following', class:'btn sug-unfollow-btn', onmouseover: 'this.innerText="Unfollow"'
+              - else
+                = form_with model: current_user.active_relationships.build, local: true do |f|
+                  = hidden_field_tag :following_id, user.id
+                  = f.submit 'Follow', class: 'btn sug-follow-btn'
