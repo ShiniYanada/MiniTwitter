@@ -26,13 +26,13 @@
                     span.prof-tweet-item Follower
                     span.prof-tweet-number = @user.followers.count
                 li
-                  = link_to '#',class: 'prof-nav-stat' do
+                  = link_to favorites_user_path, class: 'prof-nav-stat' do
                     span.prof-tweet-item Likes
-                    span.prof-tweet-number 777
+                    span.prof-tweet-number = @user.fav_posts.count
               ul.edit-nav
                 li.edit-nav-item
                   - if current_user?(@user)
-                    = link_to '#', class: 'edit-btn btn' do
+                    = link_to edit_user_path(@user), class: 'edit-btn btn' do
                       span.editBtn Edit profile
                   - else
                     - if current_user.following?(@user)

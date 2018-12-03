@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :following, :followers]
-  before_action :suggesting_users, only: [:index, :show, :following, :followers]
+  before_action :set_user, only: [:show, :edit, :update, :following, :followers, :favorites]
+  before_action :suggesting_users, only: [:index, :show, :following, :followers, :favorites]
   before_action :logged_in_user, only: [:show, :edit, :update]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
   def destroy
     log_out
-    redirect_to root_url
+    redirect_to login_url
   end
 
   def following
@@ -48,6 +48,11 @@ class UsersController < ApplicationController
   def followers
     @users = @user.followers.page(params[:page])
     render 'show_follow'
+  end
+
+  def favorites
+    @posts = @user.fav_posts.page(params[:page])
+    render 'show_favorites'
   end
 
   private

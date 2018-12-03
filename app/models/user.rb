@@ -11,6 +11,9 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :following
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :favorites
+  has_many :fav_posts, through: :favorites, source: :post
+
   def to_param
     identifier
   end
@@ -30,5 +33,17 @@ class User < ApplicationRecord
   def feed
     Post.where("user_id IN (?) OR user_id = ?", following_ids, id)
   end
+
+  def favorite(post)
+    favorites.create(post_id: post.id)
+  end
+
+  def unfavorite(post)
+    favorites.find_by(post_id: post.id).destroy
+  end
+
+  def favorite?(post)
+    fav_posts.include?(post)
+  end 
 
 end

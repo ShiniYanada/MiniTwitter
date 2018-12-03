@@ -20,14 +20,18 @@ html
                 = link_to '通知', '#', class: 'nav-link nav-text'
             .nav-item-box
               li.nav-item
-                = link_to 'メッセージ', '#', class: 'nav-link nav-text'
+                = link_to 'いいね', favorites_user_path(current_user), class: 'nav-link nav-text'
           ul.navbar-nav.ml-auto
             = form_with scope: :test, class: 'form-inline ' do |f|
               = f.text_field :search, class: 'from-control nav-search',placeholder: 'キーワード検索'
               = f.submit '検索', class: 'btn btn-info ml-2'
-            li.nav-item
-              = link_to user_path(current_user), class: 'header-link nav-link' do
+            li.nav-item.dropdown
+              = link_to user_path(current_user), class: 'header-link nav-link dropdown-toggle', data: {toggle: 'dropdown'} do
                 = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'header-icon rounded-circle'
+              .dropdown-menu
+                = link_to 'プロフィール', user_path(current_user), class: 'dropdown-item'
+                = link_to '設定', edit_user_path(current_user), class: 'dropdown-item'
+                = link_to 'ログアウト', user_path(current_user), method: :delete, class:'dropdown-item'
             li.nav-item
                 = link_to 'Tweet', login_path, class: 'btn btn-primary nav-link login-btn'
 

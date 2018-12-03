@@ -1,16 +1,23 @@
-h1 = @user.name
+.account-wrap
+  .max-800
+    .form-wrap
+      .title-wrap
+        .login-title
+          h3 プロフィール
 
-= form_with model: @user, local: true do |f|
-  .form-group.mb-4
-    = f.label :name
-    = f.text_field :name, class: 'form-control mb-4'
+      = form_with model: @user, class: 'form-style', local: true do |f|
+        .form-group
+          = f.label :name, '名前', class:'form-label'
+          = f.text_field :name,class: 'form-control form-field',placeholder:'user_name'
+        .form-group
+          = f.label :identifier, 'ID', class:'form-label'
+          = f.text_field :identifier,class: 'form-control form-field',placeholder:'user_id'
+        .form-group
+          = f.label :email, 'メールアドレス', class:'form-label'
+          = f.text_field :email, class:'form-control form-field', placeholder: 'E-mail'
 
-    = f.label :identifier
-    = f.text_field :identifier, class: 'form-control mb-4'
+        = f.submit '編集',class: 'btn form-btn'
 
-    = f.label :email
-    = f.text_field :email, class: 'form-control mb-4'
-
-    = f.submit '編集', class: 'btn btn-primary'
-
-= link_to 'ホーム', root_path
+      .ps_wrap
+        .ps_reset
+          = link_to 'パスワードの再設定', '#', class: 'ps-link'
