@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   has_many :favorites
   has_many :fav_posts, through: :favorites, source: :post
+  has_one_attached :image
 
   def to_param
     identifier
@@ -44,6 +45,6 @@ class User < ApplicationRecord
 
   def favorite?(post)
     fav_posts.include?(post)
-  end 
+  end
 
 end

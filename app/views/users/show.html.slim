@@ -28,7 +28,10 @@
             - @posts.each do |post|
               .timeline-box
                 .media
-                  = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class:'timeline-user-img rounded-circle'
+                  - if post.user.image.attached?
+                    = image_tag post.user.image, class:'timeline-user-img rounded-circle'
+                  - else
+                    = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'timeline-user-img rounded-circle'
                   .media-body
                     span.timeline-user-name
                       = link_to @user.name, user_path(@user)

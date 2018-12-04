@@ -4,4 +4,5 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :favorites
   has_many :fav_users, through: :favorites, source: :user
+  has_one_attached :image
 end

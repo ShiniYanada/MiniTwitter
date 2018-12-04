@@ -4,7 +4,10 @@
     .user-header
       .u-inner
         .u-avater
-          = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'u-profile-img rounded-circle'
+          - if @user.image.attached?
+            = image_tag @user.image, class: 'u-profile-img rounded-circle'
+          - else
+            = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'u-profile-img rounded-circle'
     .user-profile-nav.common-nav
       .u-inner
         .row

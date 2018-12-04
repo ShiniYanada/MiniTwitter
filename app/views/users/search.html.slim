@@ -5,7 +5,10 @@
         = image_tag 'cat.jpg', class: 'w-100 profile-header-img'
         div.profile-content
           = link_to user_path(current_user), class: 'prof-cont-link' do
-            = image_tag 'Dr4Z4WXUwAE5SVH.jpg', width: 80, height: 80, class: 'rounded-circle prof-cont-img'
+            - if current_user.image.attached?
+              = image_tag current_user.image, width: 80, height: 80, class: 'rounded-circle prof-cont-img'
+            - else
+              = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'prof-cont-img rounded-circle'
           .profile-info
             .prof-name
               = link_to current_user.name, user_path(current_user), class: 'h5'
@@ -38,7 +41,10 @@
         .tweet-wrap
           .tweet-box
             .media
-              = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'tweet-box-user-img rounded-circle'
+              - if current_user.image.attached?
+                = image_tag current_user.image, class: 'tweet-box-user-img rounded-circle'
+              - else
+                = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'timeline-user-img rounded-circle'
               .media-body
                 = form_with model: @post, class: 'tweet-box-content', local: true do |f|
                   = f.text_area :content, class:'tweet-content', placeholder: 'いまどうしてる'
@@ -48,7 +54,10 @@
           - @search_posts.each do |post|
             .timeline-box
               .media
-                = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class:'timeline-user-img rounded-circle'
+                - if current_user.image.attached?
+                  = image_tag post.user.image, class:'timeline-user-img rounded-circle'
+                - else
+                  = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'timeline-user-img rounded-circle'
                 .media-body
                   span.timeline-user-name
                     = link_to post.user.name, user_path(post.user)
