@@ -7,7 +7,7 @@
         .new-create
           = link_to 'ログイン', login_path, class:'create-title'
 
-      = form_with scope: :session, url: login_path, class: 'form-style', local: true do |f|
+      = form_with model: @user, class: 'form-style', local: true do |f|
         .form-group
           = f.label :identifier, 'ID', class:'form-label'
           = f.text_field :identifier,class: 'form-control form-field',placeholder:'user_id'
@@ -21,4 +21,4 @@
           = f.label :password_confirmation, 'パスワード（確認）', class: 'form-label'
           = f.password_field :password_confirmation, class: 'form-control form-field', placeholder: 'Password-confirmation'
 
-        = f.submit 'ログイン',class: 'btn form-btn'
+        = f.submit '新規作成',class: 'btn form-btn'

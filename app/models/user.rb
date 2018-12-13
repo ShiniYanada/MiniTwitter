@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :following
   has_many :followers, through: :passive_relationships, source: :follower
 
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :fav_posts, through: :favorites, source: :post
   has_one_attached :image
 

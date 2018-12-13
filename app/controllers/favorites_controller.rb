@@ -1,14 +1,12 @@
 class FavoritesController < ApplicationController
 
   def create
-    post = Post.find_by(id: params[:post_id])
-    current_user.favorite(post)
-    redirect_back(fallback_location: root_url)
+    @post = Post.find_by(id: params[:post_id])
+    current_user.favorite(@post)
   end
 
   def destroy
-    post = Favorite.find_by(id: params[:id]).post
-    current_user.unfavorite(post)
-    redirect_back(fallback_location: root_url)
+    @post = Favorite.find_by(id: params[:id]).post
+    current_user.unfavorite(@post)
   end
 end

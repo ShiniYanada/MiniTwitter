@@ -1,0 +1,4 @@
+= form_with model: current_user.favorites.find_by(post_id: post.id), class: 'remote-fav', method: :delete do |f|
+  = button_tag class: 'unfav-btn' do
+    = fa_icon 'heart'
+  span.fav-counts = post.fav_users.count
