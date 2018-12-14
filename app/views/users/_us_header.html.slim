@@ -17,19 +17,19 @@
             .UserProfileNav
               ul.us-prof-nav
                 li
-                  = link_to user_path(@user),class: 'prof-nav-stat' do
+                  = link_to user_path(@user),class: 'prof-nav-stat nav-tweet' do
                     span.prof-tweet-item Tweet
                     span.prof-tweet-number = @user.posts.count
                 li
-                  = link_to following_user_path(@user),class: 'prof-nav-stat' do
+                  = link_to following_user_path(@user),class: 'prof-nav-stat nav-following' do
                     span.prof-tweet-item Following
                     span.prof-tweet-number = @user.following.count
                 li
-                  = link_to followers_user_path(@user),class: 'prof-nav-stat' do
+                  = link_to followers_user_path(@user),class: 'prof-nav-stat nav-followers' do
                     span.prof-tweet-item Follower
                     span.prof-tweet-number = @user.followers.count
                 li
-                  = link_to favorites_user_path, class: 'prof-nav-stat' do
+                  = link_to favorites_user_path, class: 'prof-nav-stat nav-fav' do
                     span.prof-tweet-item Likes
                     span.prof-tweet-number = @user.fav_posts.count
               ul.edit-nav

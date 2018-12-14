@@ -21,8 +21,8 @@
                 = link_to '#', class:'us-tl-item' do
                   span　ツイートと返信
               li
-                = link_to '#', class:'us-tl-item' do
-                  span メディア
+                = link_to favorites_user_path(@user), class:'us-tl-item' do
+                  span いいね
 
           .timeline-wrap
             - @posts.each do |post|

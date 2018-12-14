@@ -15,14 +15,14 @@
           .us-tl-head
             ul.us-tl-nav
               li
-                = link_to @user, class:'us-tl-item' do
+                = link_to @user, class:'us-tl-item nav-tweet' do
                   span ツイート
               li
-                = link_to '#', class:'us-tl-item' do
+                = link_to '#', class:'us-tl-item nav-tw-rep' do
                   span　ツイートと返信
               li
-                = link_to '#', class:'us-tl-item' do
-                  span メディア
+                = link_to favorites_user_path(@user), class:'us-tl-item nav-fav' do
+                  span いいね
 
           .timeline-wrap
             - @posts.each do |post|

@@ -12,13 +12,13 @@ html
       nav.navbar.navbar-expand.fixed-top.bg-white.py-0.common-nav
         .header-wrap
           ul.navbar-nav.nav-height
-            .nav-item-box
+            .nav-item-box.nav-home
               li.nav-item
                 = link_to 'ホーム', root_path, class: 'nav-link nav-text'
-            .nav-item-box
+            .nav-item-box.nav-notification
               li.nav-item
                 = link_to '通知', '#', class: 'nav-link nav-text'
-            .nav-item-box
+            .nav-item-box.nav-fav
               li.nav-item
                 = link_to 'いいね', favorites_user_path(current_user), class: 'nav-link nav-text'
           ul.navbar-nav.ml-auto
