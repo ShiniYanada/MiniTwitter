@@ -39,15 +39,15 @@
                     span.timeline-time = post.created_at
                     .tweet-in-timeline
                       p = post.content
-                    .tweet-items
+                    .tweet-items class='post-#{post.id}'
                       - if current_user.favorite?(post)
-                        = form_with model: current_user.favorites.find_by(post_id: post.id),method: :delete,local: true do |f|
+                        = form_with model: current_user.favorites.find_by(post_id: post.id),method: :delete do |f|
                           = button_tag class: 'unfav-btn' do
                             = fa_icon 'heart'
                           span = post.fav_users.count
 
                       - else
-                        = form_with model: current_user.favorites.build, local: true do |f|
+                        = form_with model: current_user.favorites.build do |f|
                           = hidden_field_tag :post_id, post.id
                           = button_tag class: 'fav-btn' do
                             = fa_icon 'heart-o'

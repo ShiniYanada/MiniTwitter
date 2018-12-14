@@ -26,13 +26,13 @@
                     - else
                       = image_tag 'Dr4Z4WXUwAE5SVH.jpg', class: 'us-ff-icon rounded-circle'
                 .us-ff-prof
-                  .us-ff-btn
+                  .us-ff-btn class='ff-user-#{user.id}'
                     - if current_user.following?(user)
-                      = form_with model: current_user.active_relationships.find_by(following_id: user.id), method: :delete,local: true do |f|
+                      = form_with model: current_user.active_relationships.find_by(following_id: user.id), method: :delete do |f|
                         = hidden_field_tag :following_id, user.id
                         = f.submit 'Following', class:'btn us-unfollow-btn'
                     - else
-                      = form_with model: current_user.active_relationships.build, local: true do |f|
+                      = form_with model: current_user.active_relationships.build do |f|
                         = hidden_field_tag :following_id, user.id
                         = f.submit 'Follow', class: 'btn us-follow-btn'
                   .us-ff-cont

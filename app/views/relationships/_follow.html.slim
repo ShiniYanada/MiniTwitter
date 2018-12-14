@@ -1,0 +1,12 @@
+- if @path[:action] == 'following' or @path[:action] == 'followers'
+  = form_with model: current_user.active_relationships.build do |f|
+    = hidden_field_tag :following_id, user.id
+    = f.submit 'Follow', class: 'btn us-follow-btn'
+- elsif @path[:action] == 'show'
+  = form_with model: current_user.active_relationships.build do |f|
+    = hidden_field_tag :following_id, user.id
+    = f.submit 'Follow', class: 'btn nav-follow-btn'
+- else
+  = form_with model: current_user.active_relationships.build do |f|
+    = hidden_field_tag :following_id, user.id
+    = f.submit 'Follow', class: 'btn sug-follow-btn'

@@ -1,0 +1,13 @@
+
+- if @path[:action] == 'following' or @path[:action] == 'followers'
+  = form_with model: current_user.active_relationships.find_by(following_id: user.id), method: :delete do |f|
+
+    = f.submit 'Following', class:'btn us-unfollow-btn'
+- elsif @path[:action] == 'show'
+  = form_with model: current_user.active_relationships.find_by(following_id: @user.id), method: :delete do |f|
+
+    = f.submit 'Following', class:'btn nav-unfollow-btn'
+- else
+  = form_with model: current_user.active_relationships.find_by(following_id: user.id), method: :delete do |f|
+    
+    = f.submit 'Following', class:'btn sug-unfollow-btn'
