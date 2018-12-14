@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :following, :followers, :favorites]
   before_action :suggesting_users, only: [:index, :show, :following, :followers, :favorites, :search]
-  before_action :logged_in_user, except: [:new]
+  before_action :logged_in_user, except: [:new, :create]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :forbid_login_users, only: [:new, :create]
   before_action :set_search, only: [:index, :show, :edit, :following, :followers, :favorites, :search]
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
       log_in(@user)
       redirect_to root_url
     else
-      render 'new'
+      render 'users/new'
     end
   end
 

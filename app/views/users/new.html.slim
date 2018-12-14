@@ -7,6 +7,10 @@
         .new-create
           = link_to 'ログイン', login_path, class:'create-title'
 
+      - if @user.errors.any?
+        - @user.errors.full_messages.each do |message|
+          li = message
+
       = form_with model: @user, class: 'form-style', local: true do |f|
         .form-group
           = f.label :identifier, 'ID', class:'form-label'

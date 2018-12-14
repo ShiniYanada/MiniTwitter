@@ -7,6 +7,9 @@
         .new-create
           = link_to '新規作成', new_user_path, class:'create-title'
 
+      - if flash.any?
+        p = flash[:danger]
+
       = form_with scope: :session, url: login_path, class: 'form-style', local: true do |f|
         .form-group
           = f.label :identifier, 'ID', class:'form-label'

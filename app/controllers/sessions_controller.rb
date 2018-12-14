@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   before_action :forbid_login_users, only: [:new, :create]
-  
+
   def new
   end
 
@@ -8,14 +8,17 @@ class SessionsController < ApplicationController
     @user = User.find_by(identifier: params[:session][:identifier])
     if @user && @user.authenticate(params[:session][:password])
       log_in(@user)
+      flash[:notice] = 'ログインしました'
       redirect_back_or(root_url)
     else
+      flash[:danger] = 'メールアドレスかパスワードが間違っています'
       render 'new'
     end
   end
 
   def destroy
     log_out
+    flashj[:notice] = 'ログアウトしました'
     redirect_to root_url
   end
 
