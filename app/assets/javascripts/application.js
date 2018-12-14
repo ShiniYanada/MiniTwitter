@@ -32,12 +32,4 @@ $(document).on('turbolinks:load', function(){
   }else if(path.match(/\//)){
     $('.nav-home').css({'border-bottom': '2px solid #1DA1F2'});
   }
-
-
-   $('.remote-fav').on('ajax:success', function(event){
-     console.log(event.detail[0]);
-     $('.unfav-btn i').toggleClass('fa-heart-o　fa-heart');
-     $('.fav-btn i').toggleClass('fa-heart-o　fa-heart');
-     $('.fav-counts').html(`event.detail[0]['count']`);
-   });
 });

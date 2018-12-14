@@ -1,14 +1,18 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :following, :followers, :favorites]
   before_action :suggesting_users, only: [:index, :show, :following, :followers, :favorites, :search]
-  before_action :logged_in_user, only: [:show, :edit, :update]
+  before_action :logged_in_user, except: [:new]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :forbid_login_users, only: [:new, :create]
   before_action :set_search, only: [:index, :show, :edit, :following, :followers, :favorites, :search]
 
 
   def index
     @post = current_user.posts.build if logged_in?
     @feed_items = current_user.feed.order(created_at: :desc).page(params[:page]) if logged_in?
+    unless logged_in?
+      redirect_to login_url
+    end
   end
 
   def show
@@ -83,6 +87,13 @@ class UsersController < ApplicationController
 
     def logged_in_user
       unless logged_in?
+        store_location
+        redirect_to login_url
+      end
+    end
+
+    def forbid_login_users
+      if logged_in?
         redirect_to root_url
       end
     end
