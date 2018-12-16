@@ -1,0 +1,13 @@
+.account-wrap
+  .max-800
+    .form-wrap
+      .title-wrap
+        .login-title
+          h3 パスワード再設定（メール送信）
+
+      = form_with url: password_resets_path, method: :post, class: 'form-style', local: true do |f|
+        .form-group
+          = f.label :password_reset, 'Eメール', class:'form-label'
+          = f.text_field :password_reset, class: 'form-control form-field',placeholder:'E-mail'
+
+        = f.submit '送信',class: 'btn form-btn'

@@ -78,6 +78,9 @@
                         = button_tag class: 'fav-btn' do
                           = fa_icon 'heart-o'
                         span.fav-counts = post.fav_users.count
+                    - if post.user == current_user
+                      .d-post
+                        = link_to '削除', post_path(post), method: :delete
           .timeline-pagination
             = paginate @feed_items
 

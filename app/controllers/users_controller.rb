@@ -51,6 +51,12 @@ class UsersController < ApplicationController
     redirect_to login_url
   end
 
+  def delete
+    current_user.destroy
+    log_out
+    redirect_to login_url
+  end
+
   def following
     @users = @user.following.page(params[:page])
     render 'show_follow'

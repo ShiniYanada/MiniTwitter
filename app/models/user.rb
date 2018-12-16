@@ -1,7 +1,8 @@
 class User < ApplicationRecord
+  attr_accessor :reset_token
   validates :identifier, presence: true
   validates :email, presence: true
-  validates :name, length: {maximum: 30}
+  validates :name, length: {maximum: 30}, presence: true
   has_secure_password
   validates :password, presence: true, allow_nil: true, length: {minimum: 6}
 
@@ -14,6 +15,10 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :fav_posts, through: :favorites, source: :post
   has_one_attached :image
+
+  def User.new_token
+    SecureRandom.urlsafe_base64
+  end
 
   def to_param
     identifier
@@ -46,5 +51,20 @@ class User < ApplicationRecord
   def favorite?(post)
     fav_posts.include?(post)
   end
+
+  def create_reset_token
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest, reset_token)
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+  def send_reset_password_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end 
+
 
 end

@@ -27,4 +27,7 @@
 
       .ps_wrap
         .ps_reset
-          = link_to 'パスワードの再設定', '#', class: 'ps-link'
+          = link_to 'パスワードの再設定', new_password_reset_path, class: 'ps-link'
+        .d-user
+          - if @user == current_user
+            = link_to 'アカウントの削除', delete_path, method: :delete, data: {confirm: '本当にアカウントを削除してよろしいですか？'}

@@ -1,0 +1,18 @@
+.account-wrap
+  .max-800
+    .form-wrap
+      .title-wrap
+        .login-title
+          h3 パスワード再設定
+
+      = form_with url: password_reset_path(@user.reset_digest), method: :patch, class: 'form-style', local: true do |f|
+        .form-group
+          = f.label :password, 'パスワード', class:'form-label'
+          = f.password_field :password, class: 'form-control form-field',placeholder:'Password'
+
+          = f.label :password_confirmation, 'パスワード（確認）', class:'form-label'
+          = f.password_field :password_confirmation, class: 'form-control form-field', placeholder: 'Password-confirmation'
+
+          = hidden_field_tag :email, @user.email
+
+        = f.submit '送信',class: 'btn form-btn'
