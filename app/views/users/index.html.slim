@@ -80,7 +80,7 @@
                         span.fav-counts = post.fav_users.count
                     - if post.user == current_user
                       .d-post
-                        = link_to '削除', post_path(post), method: :delete
+                        = link_to '削除', post_path(post), method: :delete, remote: true
           .timeline-pagination
             = paginate @feed_items
 

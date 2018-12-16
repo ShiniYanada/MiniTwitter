@@ -10,8 +10,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
+    @post = Post.find_by(id: params[:id])
+    if @post
+      @post.destroy
+    end
     redirect_to root_url
   end
 
