@@ -8,11 +8,11 @@ class UsersController < ApplicationController
 
 
   def index
-    @post = current_user.posts.build if logged_in?
-    @feed_items = current_user.feed.order(created_at: :desc).page(params[:page]) if logged_in?
     unless logged_in?
       redirect_to login_url
     end
+    @post = current_user.posts.build if logged_in?
+    @feed_items = current_user.feed.order(created_at: :desc).page(params[:page]) if logged_in?
   end
 
   def show

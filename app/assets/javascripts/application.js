@@ -18,6 +18,7 @@
 //= require turbolinks
 //= require_tree .
 
+var scope = 'Global';
 
 $(document).on('turbolinks:load', function(){
   let path = location.pathname;
@@ -32,4 +33,16 @@ $(document).on('turbolinks:load', function(){
   }else if(path.match(/\//)){
     $('.nav-home').css({'border-bottom': '2px solid #1DA1F2'});
   }
+
+  $('.nav-item').on('click', function(e){
+    console.log(e.target.className);
+  });
+
+  function getValue(){
+    console.log(scope);
+    var scope =　'Local';
+  }
+
+  getValue();
+
 });
